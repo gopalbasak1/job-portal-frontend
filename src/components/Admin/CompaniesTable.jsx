@@ -14,7 +14,8 @@ import { useSelector } from "react-redux";
 
 const CompaniesTable = () => {
 
-    const {companies} = useSelector(store=>store.company)
+    const {companies} = useSelector(store=>store.company);
+    console.log(companies);
 
   return (
     <div>
@@ -32,7 +33,7 @@ const CompaniesTable = () => {
 
         <TableBody>
           {companies.length <= 0 ? (
-            <span>You haven't registered any company yet.</span>
+            <span>You have not registered any company yet.</span>
           ) : (
             companies.map((company) => (
               <TableRow key={company._id}>
