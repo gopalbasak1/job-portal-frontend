@@ -10,8 +10,12 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
+import { useSelector } from "react-redux";
 
 const CompaniesTable = () => {
+
+    const {companies} = useSelector(store=>store.company)
+
   return (
     <div>
       <Table>
@@ -27,27 +31,35 @@ const CompaniesTable = () => {
         </TableHeader>
 
         <TableBody>
-            <TableCell>
-                <Avatar>
-                    <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8kjNASp-t4VymZrnRo9hIMRSeTcWNarxbJw&s" />
-                </Avatar>
-            </TableCell>
+          {companies.length <= 0 ? (
+            <span>You haven't registered any company yet.</span>
+          ) : (
+            companies.map((company) => (
+              <TableRow key={company._id}>
+                <TableCell>
+                  <Avatar>
+                    <AvatarImage src={company?.logo} />
+                  </Avatar>
+                </TableCell>
 
-            <TableCell>Company Name</TableCell>
-            <TableCell>08/04/20204</TableCell>
-            <TableCell className="text-right">
-                <Popover>
+                <TableCell>{company?.name || "Company Name"}</TableCell>
+                <TableCell>08/04/20204</TableCell>
+                <TableCell className="text-right">
+                  <Popover>
                     <PopoverTrigger>
-                        <MoreHorizontal/>
+                      <MoreHorizontal />
                     </PopoverTrigger>
-                    <PopoverContent className='w-32'>
-                        <div>
-                            <Edit2/>
-                            <span>Edit</span>
-                        </div>
+                    <PopoverContent className="w-32">
+                      <div className="flex items-center gap-2 w-fit cursor-pointer">
+                        <Edit2 className="w-4" />
+                        <span>Edit</span>
+                      </div>
                     </PopoverContent>
-                </Popover>
-            </TableCell>
+                  </Popover>
+                </TableCell>
+              </TableRow>
+            ))
+          )}
         </TableBody>
 
       </Table>
