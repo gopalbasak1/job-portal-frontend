@@ -44,7 +44,7 @@ const CompaniesTable = () => {
                 </TableCell>
 
                 <TableCell>{company?.name || "Company Name"}</TableCell>
-                <TableCell>08/04/20204</TableCell>
+                <TableCell>{company.createdAt}</TableCell>
                 <TableCell className="text-right">
                   <Popover>
                     <PopoverTrigger>
