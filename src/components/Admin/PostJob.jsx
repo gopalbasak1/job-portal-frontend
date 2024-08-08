@@ -9,6 +9,7 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
@@ -129,24 +130,28 @@ const PostJob = () => {
             </div>
 
             {companies.length > 0 && (
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder={"Select a Company"} />
+                <Select>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select a Company" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    {companies.map((company) => {
-                      return <SelectItem key={company._id}>
-                        {company?.name}
-                      </SelectItem>;
-                    })}
+                    {
+                      companies.map((company)=>{
+                        return(
+                          <SelectItem key={company._id}>{company?.name}</SelectItem>
+                        )
+                      })
+                    }
+                    
+                   
                   </SelectGroup>
                 </SelectContent>
               </Select>
             )}
           </div>
           <Button className="w-full mt-4">Post New Job</Button>
-          {companyArray.length === 0 && (
+          {companies.length === 0 && (
             <p className="text-xs text-red-600 font-bold text-center my-3">
               *Please register a company first, before posting a job
             </p>
