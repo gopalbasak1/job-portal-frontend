@@ -35,11 +35,23 @@ const PostJob = () => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
+  const selectChangeHandler = (value) =>{
+    const selectedCompany = companies.find((company)=> company.name.toLowerCase() === value);
+    setInput({...input, companyId:selectedCompany._id})
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(input);
+  }
+
   return (
     <div>
       <Navbar />
       <div className="flex items-center justify-center w-screen my-5">
-        <form className="p-8 max-w-4xl border border-gray-200 shadow-lg rounded-md">
+        <form
+        onSubmit={submitHandler}
+        className="p-8 max-w-4xl border border-gray-200 shadow-lg rounded-md">
           <div className="grid grid-cols-2 gap-2">
             <div>
               <Label>Title</Label>
@@ -130,7 +142,7 @@ const PostJob = () => {
             </div>
 
             {companies.length > 0 && (
-                <Select>
+                <Select onValueChange={selectChangeHandler}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Select a Company" />
                 </SelectTrigger>
@@ -139,7 +151,7 @@ const PostJob = () => {
                     {
                       companies.map((company)=>{
                         return(
-                          <SelectItem key={company._id}>{company?.name}</SelectItem>
+                          <SelectItem key={company._id} value={company?.name?.toLowerCase()}>{company?.name}</SelectItem>
                         )
                       })
                     }
