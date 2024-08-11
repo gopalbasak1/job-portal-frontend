@@ -7,7 +7,7 @@ import Navbar from "./shared/Navbar";
 const Jobs = () => {
 
   const {allJobs} = useSelector(store=>store.job);
-  
+  console.log(allJobs);
 
   return (
     <div>

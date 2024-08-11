@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setSearchCompanyByText } from "./companySlice";
+
 
 
 const jobSlice = createSlice({
