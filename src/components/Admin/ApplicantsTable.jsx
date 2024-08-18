@@ -1,4 +1,5 @@
-import { Popover } from "../ui/popover";
+import { MoreHorizontal } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import {
   Table,
   TableBody,
@@ -35,9 +36,11 @@ const ApplicantsTable = () => {
                 <TableCell>Date</TableCell>
                 <TableCell className="text-right">
                     <Popover>
-                        
-                    </Popover>
-                    {
+                        <PopoverTrigger>
+                          <MoreHorizontal/>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-32">
+                        {
                         shortlistingStatus.map((status, index)=>{
                             return(
                                 <div key={index}>
@@ -46,6 +49,9 @@ const ApplicantsTable = () => {
                             )
                         })
                     }
+                        </PopoverContent>
+                    </Popover>
+                    
                 </TableCell>
             </tr>
          </TableBody>
