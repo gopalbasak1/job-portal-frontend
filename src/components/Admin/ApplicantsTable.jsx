@@ -26,6 +26,7 @@ const ApplicantsTable = () => {
             <TableHead>Date</TableHead>
             <TableHead className="text-right">Action</TableHead>
           </TableRow>
+          </TableHeader>
 
          <TableBody>
             <tr>
@@ -34,7 +35,7 @@ const ApplicantsTable = () => {
                 <TableCell>Contact</TableCell>
                 <TableCell>Resume</TableCell>
                 <TableCell>Date</TableCell>
-                <TableCell className="text-right">
+                <TableCell className="float-right cursor-pointer">
                     <Popover>
                         <PopoverTrigger>
                           <MoreHorizontal/>
@@ -43,7 +44,9 @@ const ApplicantsTable = () => {
                         {
                         shortlistingStatus.map((status, index)=>{
                             return(
-                                <div key={index}>
+                                <div key={index} 
+                                className="flex w-fit items-center my-2 cursor-pointer"
+                                >
                                  <span>{status}</span>
                                 </div>
                             )
@@ -56,7 +59,7 @@ const ApplicantsTable = () => {
             </tr>
          </TableBody>
 
-        </TableHeader>
+        
       </Table>
     </div>
   );
